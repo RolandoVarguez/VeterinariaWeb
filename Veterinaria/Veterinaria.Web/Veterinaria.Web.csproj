@@ -169,10 +169,17 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Class\Utilities.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ConsultsController.cs" />
+    <Compile Include="Controllers\HistoriesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\ManagersController.cs" />
+    <Compile Include="Controllers\OwnersController.cs" />
+    <Compile Include="Controllers\PetsController.cs" />
     <Compile Include="Controllers\PrincipalController.cs" />
+    <Compile Include="Controllers\VeterinariesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -184,10 +191,20 @@
     <Compile Include="Migrations\202005251821454_FirtsMigration.Designer.cs">
       <DependentUpon>202005251821454_FirtsMigration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202005251908345_CreateRoles.cs" />
+    <Compile Include="Migrations\202005251908345_CreateRoles.Designer.cs">
+      <DependentUpon>202005251908345_CreateRoles.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Consult.cs" />
+    <Compile Include="Models\History.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\Manager.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Owner.cs" />
+    <Compile Include="Models\Pet.cs" />
+    <Compile Include="Models\Veterinary.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -198,6 +215,16 @@
     <Content Include="Content\bootstrap-reboot.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\img\bg.jpg" />
+    <Content Include="Content\img\contact.jpg" />
+    <Content Include="Content\img\f2.jpg" />
+    <Content Include="Content\img\f3.jpg" />
+    <Content Include="Content\img\FB.png" />
+    <Content Include="Content\img\logo.jpg" />
+    <Content Include="Content\img\m1.jpg" />
+    <Content Include="Content\img\m2.jpg" />
+    <Content Include="Content\img\pajaro.png" />
+    <Content Include="Content\img\WHATSAPP.png" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -351,6 +378,36 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
+    <Content Include="Views\Veterinaries\Create.cshtml" />
+    <Content Include="Views\Veterinaries\Delete.cshtml" />
+    <Content Include="Views\Veterinaries\Details.cshtml" />
+    <Content Include="Views\Veterinaries\Edit.cshtml" />
+    <Content Include="Views\Veterinaries\Index.cshtml" />
+    <Content Include="Views\Pets\Create.cshtml" />
+    <Content Include="Views\Pets\Delete.cshtml" />
+    <Content Include="Views\Pets\Details.cshtml" />
+    <Content Include="Views\Pets\Edit.cshtml" />
+    <Content Include="Views\Pets\Index.cshtml" />
+    <Content Include="Views\Owners\Create.cshtml" />
+    <Content Include="Views\Owners\Delete.cshtml" />
+    <Content Include="Views\Owners\Details.cshtml" />
+    <Content Include="Views\Owners\Edit.cshtml" />
+    <Content Include="Views\Owners\Index.cshtml" />
+    <Content Include="Views\Managers\Create.cshtml" />
+    <Content Include="Views\Managers\Delete.cshtml" />
+    <Content Include="Views\Managers\Details.cshtml" />
+    <Content Include="Views\Managers\Edit.cshtml" />
+    <Content Include="Views\Managers\Index.cshtml" />
+    <Content Include="Views\Histories\Create.cshtml" />
+    <Content Include="Views\Histories\Delete.cshtml" />
+    <Content Include="Views\Histories\Details.cshtml" />
+    <Content Include="Views\Histories\Edit.cshtml" />
+    <Content Include="Views\Histories\Index.cshtml" />
+    <Content Include="Views\Consults\Create.cshtml" />
+    <Content Include="Views\Consults\Delete.cshtml" />
+    <Content Include="Views\Consults\Details.cshtml" />
+    <Content Include="Views\Consults\Edit.cshtml" />
+    <Content Include="Views\Consults\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -373,6 +430,15 @@
     <EmbeddedResource Include="Migrations\202005251821454_FirtsMigration.resx">
       <DependentUpon>202005251821454_FirtsMigration.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005251908345_CreateRoles.resx">
+      <DependentUpon>202005251908345_CreateRoles.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Veterinary.Common\Veterinary.Common.csproj">
+      <Project>{3fbc17fa-c628-4b54-aadc-a68c512080c9}</Project>
+      <Name>Veterinary.Common</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -1,0 +1,32 @@
+﻿@model Veterinaria.Web.Models.Consult
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+
+    <br />
+    <br />
+    <br />
+    <center>
+        <div class="card w-75 bg-dark">
+            <div class="card-body bg-gradient-dark">
+                <h1 class="card-title text-center text-danger"><b>AVISO DE ELIMINACION</b></h1><hr />
+                <h4 class="card-text text-justify text-white">
+                    Estas apunto de eliminar esta consulta,
+                    ¿Estas realmente seguro de lo que vas a hacer?
+                </h4>
+                <br />
+                <div class="form-actions container">
+                    @Html.ActionLink("No, Volver a la Lista", "Index", null, new { @class = "btn btn-outline-warning btn-lg text-center float-left" })
+                    <input type="submit" value="Si, Quiero Eliminarlo" class="btn btn-lg btn-outline-danger float-right" />
+                </div>
+            </div>
+        </div>
+
+    </center>
+}

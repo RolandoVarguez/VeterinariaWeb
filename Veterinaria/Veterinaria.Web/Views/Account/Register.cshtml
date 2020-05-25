@@ -3,39 +3,63 @@
     ViewBag.Title = "Register";
 }
 
-<h2>@ViewBag.Title.</h2>
+<div class="bg-white">
+    <br />
+    <div class="masthead bg-white">
+        <div class="masthead-content space">
+            <br />
+            <div class="card container border-dark" style="width:25rem">
+                <section id="loginForm">
+                    @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                    {
+                        <br />
+                        <div class="card-header bg-primary"></div>
+                        @Html.AntiForgeryToken()
 
-@using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-{
-    @Html.AntiForgeryToken()
-    <h4>Create a new account.</h4>
-    <hr />
-    @Html.ValidationSummary("", new { @class = "text-danger" })
-    <div class="form-group">
-        @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
-        </div>
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
-        </div>
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
-        </div>
-    </div>
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" class="btn btn-default" value="Register" />
-        </div>
-    </div>
-}
+                        <center>  <img src="~/Content/img/logo.jpg" alt="Alternate Text" width="200" height="150" /></center>
 
+
+                        <center>
+                            <h4 class="col-md-12"><b>Registrarse</b></h4>
+                            <p></p>
+                            @Html.ValidationSummary("", new { @class = "text-danger" })
+                            <div class="form-group">
+                                <p class="container">Ingrese su Correo Electronico:</p>
+                                <div class="col-md-12">
+                                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control col-md-12" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <p class="container">Ingrese su Contraseña:</p>
+                                <div class="col-md-12">
+                                    @Html.PasswordFor(m => m.Password, new { @class = "form-control col-md-12" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <p class="container">Confirme su Contraseña:</p>
+                                <div class="col-md-12">
+                                    @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control col-md-12" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-offset-2 col-md-12">
+                                    <center>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="submit" class="btn btn-outline-success btn-block btn-lg col-md-12" value="Registrarse" />
+                                        @Html.ActionLink("Volver a Inicio", "Index", "Principal", null, new { @class = "btn btn-danger btn-block btn-lg" })
+                                    </center>
+                                </div>
+                            </div>
+                        </center>
+                        <br />
+                        <div class="card-footer bg-primary"></div>
+                        <br />
+                    }
+                </section>
+            </div>
+        </div>
+    </div>
+</div>
+<br />
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }

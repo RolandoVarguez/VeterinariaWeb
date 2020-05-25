@@ -1,0 +1,48 @@
+﻿@model IEnumerable<Veterinaria.Web.Models.Veterinary>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="col-md-offset-2 col-md-12">
+    <p></p>
+    <h1>
+        @Html.ActionLink("Agregar otra Veterinario", "Create", null, new { @class = "btn btn-lg btn-block btn-dark" })
+        <p></p>
+    </h1>
+
+</div>
+<div class="row col-md-12">
+
+    @foreach (var item in Model)
+    {
+
+        <div class="col-xl-3 col-md-3 mb-4">
+            <div class="card border-bottom-dark shadow  border-left-dark shadow h-100 py-2">
+                <div class="card-header bg-primary"></div>
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-dark  text-lg-left mb-1">Matricula: @item.Id</div>
+                            <div class="text-xs font-weight-bold text-dark  text-lg-left mb-1">Descripcion: @item.Description</div>
+
+
+                        </div>
+                        <div>
+                            <p></p>
+                            @Html.ActionLink("Consultar", "Details", new { id = item.Id }, new { @class = "btn btn-info" })
+                            @Html.ActionLink("Editar", "Edit", new { id = item.Id }, new { @class = "btn btn-warning" })
+                            @Html.ActionLink("Eliminar", "Delete", new { id = item.Id }, new { @class = "btn btn-danger" })
+
+                        </div>
+
+                    </div>
+
+                </div>
+                <div class="card-footer bg-primary"></div>
+            </div>
+        </div>
+
+    }
+</div>
+</div>

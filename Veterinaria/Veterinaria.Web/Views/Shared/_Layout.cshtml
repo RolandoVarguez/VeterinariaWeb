@@ -3,37 +3,59 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    <link href="Content/bootstrap.min.css" rel="stylesheet">
+    <link href="~/Content/Site.css" rel="stylesheet" />
 
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                </ul>
-                @Html.Partial("_LoginPartial")
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-primary">
+        <a class="navbar-brand text-white" href="@Url.Action("Index","Principal")"><b>PetSecure Veterinary </b></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav col-md-12 ">
+
+                <a class="nav-item nav-link active text-white" href="@Url.Action("Index","Principal")"><b> Inicio </b><span class="sr-only">(current)</span></a>
+                <a class="nav-item nav-link text-white" href="#about"><b>Acerca de </b></a>
+                <a class="nav-item nav-link text-white" href="#contact"><b>Contacto</b></a>
+
+                @if (User.IsInRole("Admin"))
+                {
+                    <a class="nav-item nav-link text-white" href="@Url.Action("Index","Users")"><b>Usuarios</b></a>
+                    <a class="nav-item nav-link text-white" href="@Url.Action("Index","Veterinary")"><b>Medico</b></a>
+                }
+
+                @if (User.IsInRole("Owner"))
+                {
+
+                    <a class="nav-item nav-link text-white" href="@Url.Action("Index","Pets")"><b>Mascotas</b></a>
+                }
+
+                @if (User.IsInRole("Veterinary"))
+                {
+                    <a class="nav-item nav-link text-white" href="@Url.Action("Index","Consults")"><b>Consultas</b></a>
+                }
+
+                <a class="nav-item nav-link text-white" href="@Url.Action("Login","Account")"><b>Iniciar Sesion</b></a>
+                <a class="nav-item nav-link text-white" href="@Url.Action("Register","Account")"><b>Registrarse</b></a>
+
+
             </div>
         </div>
-    </div>
+    </nav>
+
+
+
+    @RenderBody()
+    <!--FOOTER-->
     <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+
+        <footer class="text-dark">
+            <h4 class="text-center">&copy; @DateTime.Now.Year - Mi Veterinaria </h4>
         </footer>
     </div>
 

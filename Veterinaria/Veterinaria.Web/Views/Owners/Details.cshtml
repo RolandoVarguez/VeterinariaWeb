@@ -1,0 +1,40 @@
+﻿@model Veterinaria.Web.Models.Owner
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<div class="bg-white container">
+    <br />
+    <div class="masthead bg-white">
+        <div class="masthead-content space">
+            <br />
+            <div class="card container border-dark text-lg-center" style="width:30rem">
+                <div>
+                    <br />
+                    <div class="card-header bg-primary text-black-50"></div>
+
+                    <dl class="dl-horizontal text-black-50 container"> 
+                        <center><img src="~/Content/img/logo.jpg" alt="Alternate Text" width="200" height="150" /></center>
+                        <h2 class="text-center"><b>Perfil del Dueño</b></h2>
+                        <p></p>
+                        <p></p>
+
+
+
+                        <br />
+                        <p>
+                            @Html.ActionLink("Modificar Datos", "Edit", new { id = Model.Id }, new { @class = "btn btn-lg btn-outline-warning btn-block" })
+                            @Html.ActionLink("Volver a la Lista", "Index", null, new { @class = "btn btn-lg btn-danger btn-block" })
+                        </p>
+                    </dl>
+                    <div class="card-footer bg-primary text-black-50" </div>
+
+                </div>
+                <br />
+            </div>
+
+        </div>
+    </div>
+    <br />
+</div>

@@ -1,0 +1,70 @@
+﻿@model Veterinaria.Web.Models.Consult
+
+@{
+    ViewBag.Title = "Create";
+}
+
+    <div class="bg-white container">
+        <br />
+        <div class="masthead bg-white">
+            <div class="masthead-content space">
+                <br />
+                <div class="card container border-dark" style="width:40rem">
+                    @using (Html.BeginForm("Create", "Consults", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                    {
+                        <br />
+                        <div class="card-header bg-primary"></div>
+                        <br />
+                        @Html.AntiForgeryToken()
+
+                        <div class="form-horizontal text-black-50 container">
+                            <h4 class="text-center"><b>Registra los datos de la Consulta</b></h4>
+                            <p class="text-center">Ingresa en los campos los datos necesarios para el registro.</p>
+                            <br />
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                            <center>
+                                <div class="form-group">
+                                    <b>Descripcion de la consulta:</b>
+                                    <p></p>
+                                    <div class="col-md-12">
+                                        @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <b>Fecha de la Consulta:</b>
+                                    <p></p>
+                                    <div class="col-md-12">
+                                        @Html.EditorFor(model => model.ConsultDate, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <b>Motivo de la Consulta:</b>
+                                    <p></p>
+                                    <div class="col-md-12">
+                                        @Html.EditorFor(model => model.ConsultType, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <br />
+                                <div class="form-group" align="center">
+                                    <div class="col-md-offset-2 col-md-12">
+
+                                        <input type="submit" value="Agregar Consulta" class="btn btn-outline-success btn-lg btn-block col-md-12" />
+                                        @Html.ActionLink("Volver a la Lista", "Index", "Consults", null, new { @class = "btn btn-danger btn-lg btn-block" })
+
+                                    </div>
+                                </div>
+                            </center>
+                        </div>
+                    }
+                    <div class="card-footer bg-primary"></div>
+                    <br />
+                </div>
+            </div>
+            <br />
+        </div>
+
+    </div>
