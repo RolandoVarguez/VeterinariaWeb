@@ -195,6 +195,14 @@
     <Compile Include="Migrations\202005251908345_CreateRoles.Designer.cs">
       <DependentUpon>202005251908345_CreateRoles.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202005271832412_Create-ForeignKey.cs" />
+    <Compile Include="Migrations\202005271832412_Create-ForeignKey.Designer.cs">
+      <DependentUpon>202005271832412_Create-ForeignKey.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202005271905546_UpdateOwner.cs" />
+    <Compile Include="Migrations\202005271905546_UpdateOwner.Designer.cs">
+      <DependentUpon>202005271905546_UpdateOwner.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Consult.cs" />
@@ -408,6 +416,7 @@
     <Content Include="Views\Consults\Details.cshtml" />
     <Content Include="Views\Consults\Edit.cshtml" />
     <Content Include="Views\Consults\Index.cshtml" />
+    <Content Include="Views\Pets\AllPets.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -432,6 +441,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202005251908345_CreateRoles.resx">
       <DependentUpon>202005251908345_CreateRoles.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005271832412_Create-ForeignKey.resx">
+      <DependentUpon>202005271832412_Create-ForeignKey.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005271905546_UpdateOwner.resx">
+      <DependentUpon>202005271905546_UpdateOwner.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

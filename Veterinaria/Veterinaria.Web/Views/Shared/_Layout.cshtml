@@ -35,14 +35,22 @@
                     <a class="nav-item nav-link text-white" href="@Url.Action("Index","Pets")"><b>Mascotas</b></a>
                 }
 
-                @if (User.IsInRole("Veterinary"))
+
+                @if (User.IsInRole("Admin"))
+                {
+
+                    <a class="nav-item nav-link text-white" href="@Url.Action("AllPets","Pets")"><b>Mascotas</b></a>
+                }
+
+                @if (User.IsInRole("Veterinary") || User.IsInRole("Admin"))
                 {
                     <a class="nav-item nav-link text-white" href="@Url.Action("Index","Consults")"><b>Consultas</b></a>
                 }
 
-                <a class="nav-item nav-link text-white" href="@Url.Action("Login","Account")"><b>Iniciar Sesion</b></a>
-                <a class="nav-item nav-link text-white" href="@Url.Action("Register","Account")"><b>Registrarse</b></a>
 
+                <span class="navbar-text">
+                    @Html.Partial("_LoginPartial")
+                </span>
 
             </div>
         </div>
