@@ -4,7 +4,7 @@
     ViewBag.Title = "Edit";
 }
 
-div class="bg-white container">
+<div class="bg-white container">
 <br />
 <div class="masthead bg-white">
     <div class="masthead-content space">
@@ -89,6 +89,15 @@ div class="bg-white container">
                                     @Html.ValidationMessageFor(model => model.Height, "", new { @class = "text-danger" })
                                 </div>
                             </div>
+                            <div class="form-group">
+                                <b>Imagen de la Mascota</b>
+                                <p></p>
+                                <div class="col-md-12">
+                                    <img src="@Url.Action("getImage","Pets",new { Id = Model.Id })" width="380" height="380" />
+                                    <br />                                
+                                </div>
+                            </div>
+
                             <br />
                             <div class="form-group" align="center">
                                 <div class="col-md-offset-2 col-md-12">
@@ -98,7 +107,7 @@ div class="bg-white container">
 
                                 </div>
                             </div>
-                    </center>
+</center>
                 </div>
             }
             <div class="card-footer bg-primary"></div>

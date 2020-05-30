@@ -1,8 +1,13 @@
 ﻿using Microsoft.AspNet.Identity;
 using System.Data;
 using System.Data.Entity;
+using System.Drawing;
+using System.Drawing.Imaging;
+using System.IO;
 using System.Linq;
 using System.Net;
+using System.Web;
+using System.Web.Helpers;
 using System.Web.Mvc;
 using Veterinaria.Web.Models;
 
@@ -53,8 +58,13 @@ namespace Veterinaria.Web.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Pet pet)
+        public ActionResult Create(Pet pet, HttpPostedFileBase hpb)
         {
+            HttpPostedFileBase FileBase = Request.Files[0];
+            WebImage image = new WebImage(FileBase.InputStream);
+            pet.Imagen = image.GetBytes();
+
+
             if (ModelState.IsValid)
             {
                 //SI ESTA AUTENTICADO
@@ -92,8 +102,21 @@ namespace Veterinaria.Web.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Name,PetType,Age,BirthDate,Color,Race,Weight,Height,ImgUrl")] Pet pet)
+        public ActionResult Edit([Bind(Include = "Id,Name,PetType,Age,BirthDate,Color,Race,Weight,Height,Imagen")] Pet pet)
         {
+            byte[] ImagenActual = null;
+            HttpPostedFileBase FileBase = Request.Files[0];
+
+            if(FileBase == null)
+            {
+                ImagenActual = db.Pets.SingleOrDefault(t => t.Id == pet.Id).Imagen;
+            }
+            else
+            {
+                WebImage image = new WebImage(FileBase.InputStream);
+                pet.Imagen = image.GetBytes();
+            }
+
             if (ModelState.IsValid)
             {
                 db.Entry(pet).State = EntityState.Modified;
@@ -137,5 +160,23 @@ namespace Veterinaria.Web.Controllers
             }
             base.Dispose(disposing);
         }
+
+        public ActionResult getImage(int id)
+        {
+            Pet mascotas = db.Pets.Find(id);
+            byte[] byteimage = mascotas.Imagen;
+
+            MemoryStream memoryStream = new MemoryStream(byteimage);
+            Image image = Image.FromStream(memoryStream);
+
+            memoryStream = new MemoryStream();
+            image.Save(memoryStream, ImageFormat.Jpeg);
+            memoryStream.Position = 0;
+
+            return File(memoryStream, "img/jpg");
+        }
+
+
+
     }
 }

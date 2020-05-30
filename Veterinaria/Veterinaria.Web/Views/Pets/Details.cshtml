@@ -83,6 +83,18 @@
                             @Html.DisplayFor(model => model.Height)
                         </dd>
 
+                        <dt>
+                            <b>Foto de la mascota:</b>
+                        </dt>
+
+                        <dd>
+
+                            <img src="@Url.Action("getImage","Pets", new { id = Model.Id })" width="380" height="380"/>
+                            <br />                    
+                            @Html.ValidationMessageFor(model => model.Imagen, "", new { @class = "text-danger" })
+
+                        </dd>
+
                         <br />
                         <p>
                             @Html.ActionLink("Modificar Datos", "Edit", new { id = Model.Id }, new { @class = "btn btn-lg btn-outline-warning btn-block" })
